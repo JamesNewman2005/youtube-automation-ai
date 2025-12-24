@@ -1,9 +1,14 @@
 import os
+import asyncio
+from src.audio_synthesizer import AudioSynthesizer
 from src.generator import Script_Generator
 from src.niche_discovery import Niche_Discovery
 from helpers.write_to_file import write_script_to_file
 
-def main():
+async def main():
+
+    audio_synthesizer = AudioSynthesizer()
+
     print(f'----- Youtube Automation AI -----')
     print('[1] - Start')
     print('[2] - Exit')
@@ -18,16 +23,37 @@ def main():
 
         if len(niches) != 0:
             print('- Generating script(s)')
-            
+
             for niche in niches:
                 script_generator = Script_Generator('', niche)
                 script = script_generator.generate_script()
 
                 if write_script_to_file(niche, script):
-                   print(f'- ✅ Successfuly generated script for - {niche}') 
+                   print(f'- ✅ Successfuly generated script for - {niche}')
+
+
+            print('')
+            print('Converting script(s) to audio...')
+            print('')
+
+            script_contents = {}
+            
+            if os.path.exists('output/scripts'):
+                for filename in os.listdir('output/scripts'):
+                    filepath = os.path.join('output/scripts', filename)
+                    
+                    if os.path.isfile(filepath) and filename.endswith('.txt'):
+                        with open(filepath, 'r', encoding='utf-8') as file:
+                            script_contents[filename] = file.read()
+            
+            for filename, content in script_contents.items():
+                print(f'Processing {filename}...')
+                await audio_synthesizer.convert_text_to_voice(content, filename)
+            
+
                 
     elif selection == '2':
         exit(0)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

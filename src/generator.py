@@ -4,6 +4,7 @@ class Script_Generator:
     def __init__(self, model, niche) -> None:
         self.url = "http://localhost:1234/v1/chat/completions"
         self.model = model
+        self.response = ""
         self.niche = niche
 
     def generate_script(self) -> str:
