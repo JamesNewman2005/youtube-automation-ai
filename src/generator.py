@@ -1,13 +1,16 @@
 import requests
 
 class Script_Generator:
-    def __init__(self, model, niche) -> None:
+    def __init__(self) -> None:
         self.url = "http://localhost:1234/v1/chat/completions"
-        self.model = model
+        self.model = ""
         self.response = ""
+        self.niche = ""
+
+    def generate_script(self, model, niche) -> str:
+        self.model = model
         self.niche = niche
 
-    def generate_script(self) -> str:
         response = requests.post(
             self.url,
             json={

@@ -1,0 +1,102 @@
+Screen {
+    background: #0a0a0a;
+}
+
+Header {
+    background: #0f0f0f;
+    color: #ffffff;
+    text-style: bold;
+    border-bottom: solid #1a1a1a;
+}
+
+#main_container {
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 1fr 3fr;
+    padding: 2;
+    height: 1fr;
+}
+
+/* --- SIDEBAR --- */
+#sidebar {
+    background: #0f0f0f;
+    padding: 2;
+    margin-right: 2;
+    border: round #1a1a1a;
+    layout: vertical;
+}
+
+.section-title {
+    color: #ffffff;
+    text-style: underline bold;
+    margin-bottom: 2;
+}
+
+.stat-card {
+    margin-bottom: 2;
+    height: auto;
+}
+
+.stat-label {
+    color: #666666;
+    text-style: bold;
+}
+
+.stat-value {
+    color: #ffffff;
+    text-style: bold;
+}
+
+#status_indicator { color: #4ade80; }
+#status_indicator.active { color: #60a5fa; }
+
+ProgressBar {
+    margin: 1 0;
+    height: 1;
+}
+
+/* --- UNIFIED CONSOLE AREA --- */
+#content_area {
+    background: #0a0a0a;
+    border: round #1a1a1a;
+    layout: vertical;
+    padding: 0;
+}
+
+#console_header {
+    width: 100%;
+    height: auto;
+    content-align: center middle;
+    color: #4ade80;
+    background: transparent;
+    padding-top: 1;
+    border-bottom: solid #1a1a1a;
+}
+
+RichLog {
+    background: transparent;
+    border: none;
+    padding: 1 2;
+    color: #e0e0e0;
+    height: 1fr; /* Takes up middle space */
+}
+
+/* --- BUTTON ROW --- */
+#button_row {
+    height: auto;
+    width: 100%;
+    background: #0f0f0f;
+    border-top: solid #1a1a1a;
+    padding: 1 2;
+    align: center middle;
+}
+
+Button {
+    margin: 0 1;
+    border: none;
+    text-style: bold;
+}
+
+#btn_discover { background: #15803d; color: white; }
+#btn_reset { background: #1d4ed8; color: white; }
+#btn_quit { background: #b91c1c; color: white; }
